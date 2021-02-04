@@ -3,11 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def logout
+    reset_session
+    redirect_to root_path
   end
 
-  def signup
+  ##Create user via oauth and login via oauth in same method here
+  def oauth
   end
 
-  def oauth_login
-  end
+
 end
