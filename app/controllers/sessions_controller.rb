@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
   def login
+    if logged_in?
+      redirect_to '/dashboard'
+    else
+      @user = User.new
+      render :login
+    end
   end
 
   def logout
