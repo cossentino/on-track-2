@@ -21,7 +21,7 @@
         </div>
         <div class="col s2">
             <%= f.label "Category" %>
-            <%= f.collection_select :category_id, Category.all.uniq, :id, :name  %> 
+            <%= f.collection_select :category_id, my_categories, :id, :name  %> 
         </div>
     <% end %>
 </div>
