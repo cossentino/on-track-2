@@ -12,7 +12,7 @@
   <div class="col s1"><h6> Category: </h6></div>
 </div>
 <% @user.purchases.each do |pur| %>
-  <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
+  <%= render partial: '/purchases/purchase', locals: { purchase: pur, user: @user } %>
 <% end %>
 
 
