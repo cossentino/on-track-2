@@ -2,9 +2,33 @@
 
 
 <div class="row" style="display:block">
-    <div class="col s1"> <%= purchase.location %></div>
-    <div class="col s1"> <%= purchase.date %></div>
-    <div class="col s1"> $<%= purchase.total  %></div>
-    <div class="col s2"> <%= purchase.note %></div>
-    <div class="col s1"> <%= purchase.category.name %>
+    <%= form_for purchase, url: user_purchases_path(user) do |f| %>
+        <div class="col s1">
+            <%= f.label "Store/Location" %>
+            <%= f.text_field :location %>
+        </div>
+        <div class="col s3">
+            <%= f.label "Date" %>
+            <%= f.date_field :date %>
+        </div>
+        <div class="col s1">
+            <%= f.label "Total" %>
+            <%=f.text_field  :total  %>
+        </div>
+        <div class="col s3">
+            <%= f.label "Purchase Notes" %>
+            <%= f.text_field :note %>
+        </div>
+        <div class="col s1">
+            <%= f.label "Category" %>
+            <%= f.collection_select :category_id, Category.all, :id, :name  %> 
+        </div>
+    <% end %>
 </div>
+
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
