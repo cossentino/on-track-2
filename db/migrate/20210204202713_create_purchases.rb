@@ -6,6 +6,7 @@ class CreatePurchases < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.integer :category_id
       t.string :note
+      t.date :date
 
       t.timestamps
     end
