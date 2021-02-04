@@ -2,3 +2,6 @@
 
 
 <%= render partial: 'purchase', locals: { purchase: @purchase, user: signed_in_user } %>
+
+<%= submit_tag "Save", class: "btn" %>
+<%= submit_tag "Save and add another", class: "btn" %>

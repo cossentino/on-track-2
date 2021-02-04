@@ -15,20 +15,15 @@
             <%= f.label "Total" %>
             <%=f.text_field  :total  %>
         </div>
-        <div class="col s3">
+        <div class="col s5">
             <%= f.label "Purchase Notes" %>
-            <%= f.text_field :note %>
+            <%= f.text_area :note %>
         </div>
-        <div class="col s1">
+        <div class="col s2">
             <%= f.label "Category" %>
-            <%= f.collection_select :category_id, Category.all, :id, :name  %> 
+            <%= f.collection_select :category_id, Category.all.uniq, :id, :name  %> 
         </div>
     <% end %>
 </div>
 
 
-<script>
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
-</script>
