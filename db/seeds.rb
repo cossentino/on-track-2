@@ -22,7 +22,7 @@ DATA = {
     ["qwallis@nyu.edu", "Quvenzhané", "Wallis", false, 60000, 1, "password"]
   ],
   :purchase_keys =>
-   ["place", "total", "user_id", "category_id", "note"],
+   ["location", "total", "user_id", "category_id", "note"],
   :purchases => [
     ["target", 217.6, 1, 1, 'welcome to target!'],
     ["walmart", 175.1, 2, 2, "test test"],
