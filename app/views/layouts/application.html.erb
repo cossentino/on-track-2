@@ -27,6 +27,7 @@
       </div>
     </nav>
     <div class="container" style="padding-top: 20px">
+      <%= flash[:alert] if flash[:alert] %>
       <%= yield %>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

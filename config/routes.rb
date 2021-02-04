@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#sign_in_user'
   get '/signup', to: 'users#new'
-  delete '/logout', to: 'sessions#logout'
+  get '/logout', to: 'sessions#logout'
   get '/dashboard', to: 'users#dashboard'
   resources :users do 
     resources :purchases
