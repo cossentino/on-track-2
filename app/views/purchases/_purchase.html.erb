@@ -4,8 +4,9 @@
 <div class="row" style="display:block">
     <div class="col s2"> <%= purchase.location %></div>
     <div class="col s2"> <%= purchase.date %></div>
-    <div class="col s2"> $<%= purchase.total  %></div>
+    <div class="col s1"> $<%= purchase.total  %></div>
     <div class="col s4"><%= purchase.note %></div>
     <div class="col s2"> 
+    <div class= "col s1"><a href="<%= user_edit_purchase_path(signed_in_user, purchase)%>">Edit</a>
 </div><br>
 
