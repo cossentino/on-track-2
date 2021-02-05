@@ -1,4 +1,7 @@
-<h4><%= "Welcome, #{@user.first_name}" %></h4> <img src=<%= session[:image] if session[:image] %>>
+
+<div class="row" style="display:block">
+  <h5 class="left"><%= "Welcome, #{@user.first_name}" %></h5> <img class="right" src=<%= session[:image] if session[:image] %>>
+</div>
 
 
 

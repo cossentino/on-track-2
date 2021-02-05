@@ -24,6 +24,12 @@ class PurchasesController < ApplicationController
     end
   end
 
+  def destroy
+    # raise params.inspect
+    Purchase.find_by_id(params[:id]).destroy
+    redirect_to '/'
+  end
+
 
   private
 
