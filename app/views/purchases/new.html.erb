@@ -1,7 +1,30 @@
 <h1>Add a new purchase</h1>
 
 
-<%= render partial: 'new_purchase', locals: { purchase: @purchase, user: signed_in_user } %>
+<div class="row" style="display:block">
+    <%= form_for @purchase, url: user_purchases_path(@user) do |f| %>
+        <div class="col s1">
+            <%= f.label "Store/Location" %>
+            <%= f.text_field :location %>
+        </div>
+        <div class="col s3">
+            <%= f.label "Date" %>
+            <%= f.date_field :date %>
+        </div>
+        <div class="col s1">
+            <%= f.label "Total" %>
+            <%=f.text_field  :total  %>
+        </div>
+        <div class="col s5">
+            <%= f.label "Purchase Notes" %>
+            <%= f.text_area :note %>
+        </div>
+        <div class="col s2">
+            <%= f.label "Category" %>
+            <%= f.collection_select :category_id, Category.my_categories(signed_in_user), :id, :name  %> 
+        </div>
+</div>
 
-<%= submit_tag "Save", class: "btn" %>
-<%= submit_tag "Save and add another", class: "btn" %>
+    <%= submit_tag "Save", class: "btn" %>
+    <%= submit_tag "Save and add another", class: "btn" %>
+  <% end %>
