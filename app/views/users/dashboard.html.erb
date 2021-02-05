@@ -14,9 +14,11 @@
   <div class="col s4"><h6>Notes: </h6></div>
   <div class="col s2"><h6> Category: </h6></div>
 </div>
-<% Purchase.current_month_purchases(@user).each do |pur| %>
-  <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
-<% end %>
+<div class="row" style="display:block">
+  <% Purchase.current_month_purchases(@user).each do |pur| %>
+    <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
+  <% end %>
+</div>
 
 <%= link_to "View All Purchases", user_purchases_path(@user), class: 'btn' %>
 

@@ -6,10 +6,15 @@
 <div class="row" style="display:block">
   <div class="col s2"><h6>Name: </h6></div>
   <div class="col s2"><h6>Date: </h6></div>
-  <div class="col s2"><h6>Total: </h6></div>
-  <div class="col s4"><h6>Notes: </h6></div>
+  <div class="col s1"><h6>Total: </h6></div>
+  <div class="col s3"><h6>Notes: </h6></div>
   <div class="col s2"><h6> Category: </h6></div>
 </div>
 <% @purchases.each do |pur| %>
-  <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
+  <div class="row" style="margin-bottom:0px">
+    <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
+    <div class="right">
+      <p><a href="<%= edit_user_purchase_path(signed_in_user, pur)%>">Edit</a>&nbsp;&nbsp;<a style="float:right" href="<%= delete_user_purchase_path(signed_in_user, pur)%>">Delete</a></p>
+    </div>
+  </div>
 <% end %>

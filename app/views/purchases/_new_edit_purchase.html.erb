@@ -23,7 +23,7 @@
         </div>
         <div class="col s2">
             <%= f.label "Category" %>
-            <%= f.collection_select :category_id, Category.my_categories(signed_in_user), :id, :name, { include_blank: true, selected: purchase.category.name } %> 
+            <%= f.collection_select :category_id, Category.my_categories(signed_in_user), :id, :name, { include_blank: true, selected: (purchase.category.name if purchase.category) } %> 
         </div>
         <div class="col s2">
             <%= f.label "Add New Category" %>
