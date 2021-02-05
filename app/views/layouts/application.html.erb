@@ -10,20 +10,29 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"> 
+    <style>
+      * {
+        font-family: 'PT Sans', sans-serif;
+      }
+    </style>
   </head>
 
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="/dashboard" class="brand-logo">On Track</a>
-        <% if signed_in_user %>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href=<%= user_purchases_path(signed_in_user) %>>Purchases</a></li>
-            <li><a href=<%= new_user_purchase_path(signed_in_user) %>>New Purchase</a></li>
-            <li><a href=<%= edit_user_path(signed_in_user) %>>Edit my information</a></li>
-            <li><a href="/logout">Logout</a></li>
-          </ul>
-        <% end %>
+        <div class="container">
+          <a href="/dashboard" class="brand-logo">On Track</a>
+          <% if signed_in_user %>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href=<%= user_purchases_path(signed_in_user) %>>Purchases</a></li>
+              <li><a href=<%= new_user_purchase_path(signed_in_user) %>>New Purchase</a></li>
+              <li><a href=<%= edit_user_path(signed_in_user) %>>Edit my information</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          <% end %>
+        </div>
       </div>
     </nav>
     <div class="container" style="padding-top: 20px">

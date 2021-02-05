@@ -1,15 +1,17 @@
 class UsersController < ApplicationController
 
+  before_action :user_verification
+
   def new
     @user = User.new
   end
 
   def dashboard
-    @user = User.find_by_id(current_user.id)
+    @user = current_user
   end
 
   def edit
-    @user = User.find_by_id(current_user.id)
+    @user = current_user
   end
 
   def create
@@ -24,8 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find_by_id(current_user.id)
-    if user.update(user_params)
+    if current_user.update(user_params)
       redirect_to '/dashboard'
     else
       flash[:alert] = "There was an error saving your account. Please try again."
@@ -46,7 +47,11 @@ class UsersController < ApplicationController
     end
 
 
-
+    def user_verification
+      if params[:id]
+        redirect_to root_path unless session[:user_id] == params[:id].to_i
+      end
+    end
 
 
 
