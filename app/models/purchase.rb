@@ -1,6 +1,6 @@
 class Purchase < ApplicationRecord
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, optional: true
 
   def self.current_month
     Time.now.strftime('%m')

@@ -27,7 +27,6 @@ class SessionsController < ApplicationController
 
   ##Create user via oauth and login via oauth in same method here
   def oauth
-    binding.pry
     oauth_email = request.env['omniauth.auth']['info']['email']
     ## if user exists in database, ensure that it is also from social
     if user = User.find_by(email: oauth_email)

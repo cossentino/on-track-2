@@ -1,28 +1,31 @@
 <h1>Add a new purchase</h1>
 
-
+<%= signed_in_user.email %>
+<%= user_purchases_path(signed_in_user) %>
+<%= @purchase %>
 <div class="row" style="display:block">
-    <%= form_for @purchase, url: user_purchases_path(@user) do |f| %>
-        <div class="col s1">
-            <%= f.label "Store/Location" %>
-            <%= f.text_field :location %>
-        </div>
-        <div class="col s3">
-            <%= f.label "Date" %>
-            <%= f.date_field :date %>
-        </div>
-        <div class="col s1">
-            <%= f.label "Total" %>
-            <%=f.text_field  :total  %>
-        </div>
-        <div class="col s5">
-            <%= f.label "Purchase Notes" %>
-            <%= f.text_area :note %>
-        </div>
-        <div class="col s2">
-            <%= f.label "Category" %>
-            <%= f.collection_select :category_id, Category.my_categories(signed_in_user), :id, :name  %> 
-        </div>
+    <%= form_for @purchase, url: user_purchases_path(signed_in_user) do |f| %>
+      <%= f.hidden_field :user_id %>
+      <div class="col s1">
+          <%= f.label "Store/Location" %>
+          <%= f.text_field :location %>
+      </div>
+      <div class="col s3">
+          <%= f.label "Date" %>
+          <%= f.date_field :date %>
+      </div>
+      <div class="col s1">
+          <%= f.label "Total" %>
+          <%=f.text_field  :total  %>
+      </div>
+      <div class="col s5">
+          <%= f.label "Purchase Notes" %>
+          <%= f.text_area :note %>
+      </div>
+      <div class="col s2">
+          <%= f.label "Category" %>
+          <%= f.collection_select :category_id, Category.my_categories(signed_in_user), :id, :name  %> 
+      </div>
 </div>
 
     <%= submit_tag "Save", class: "btn" %>

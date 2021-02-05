@@ -3,8 +3,7 @@ class PurchasesController < ApplicationController
   before_action :user_verification
 
   def new
-    @purchase = Purchase.new
-    @user = current_user
+    @purchase = current_user.purchases.build
   end
 
   def index
@@ -12,13 +11,13 @@ class PurchasesController < ApplicationController
   end
 
   def create
-
+    binding.pry
     purchase = Purchase.new(purchase_params)
     if purchase.save
       redirect_to '/dashboard'
     else
       flash[:alert] = "Purchase couldn't save, please try again"
-      render :new
+      redirect_to '/'
     end
   end
 
@@ -30,7 +29,7 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase).permit(:location, :date, :note, :total, :category_id)
+    params.require(:purchase).permit(:location, :date, :note, :total, :category_id, :user_id)
   end
 
   

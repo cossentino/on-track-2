@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    puts session[:user_id]
     @user = current_user
   end
 
