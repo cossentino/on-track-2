@@ -11,10 +11,13 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    binding.pry
     purchase = Purchase.new(purchase_params)
     if purchase.save
-      redirect_to '/dashboard'
+      if params[:commit] == "Save and add another"
+        redirect_to new_user_purchase_path(current_user)
+      else
+        redirect_to '/dashboard'
+      end
     else
       flash[:alert] = "Purchase couldn't save, please try again"
       redirect_to '/'
