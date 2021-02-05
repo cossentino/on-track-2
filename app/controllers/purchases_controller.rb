@@ -30,6 +30,20 @@ class PurchasesController < ApplicationController
     redirect_to '/'
   end
 
+  def edit
+    @purchase = Purchase.find_by_id(params[:id])
+  end
+
+  def update
+    purchase = Purchase.find_by_id(params[:id])
+    if purchase.update(purchase_params)
+      redirect_to user_purchases_path(current_user)
+    else
+      flash[:alert] = "could not update, please try again"
+      render :edit, locals: @purchase = Purchase.find_by_id(params[:id])
+    end
+  end
+
 
   private
 

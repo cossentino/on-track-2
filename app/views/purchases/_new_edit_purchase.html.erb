@@ -2,7 +2,7 @@
 
 
 
-    <%= form_for purchase, url: user_purchases_path(signed_in_user) do |f| %>
+    <%= form_for purchase, url: url do |f| %>
       <div class="row">
         <%= f.hidden_field :user_id %>
         <div class="col s1">
@@ -23,7 +23,7 @@
         </div>
         <div class="col s2">
             <%= f.label "Category" %>
-            <%= f.collection_select :category_id, Category.my_categories(signed_in_user), :id, :name  %> 
+            <%= f.collection_select :category_id, Category.my_categories(signed_in_user), :id, :name, { include_blank: true, selected: purchase.category.name } %> 
         </div>
         <div class="col s2">
             <%= f.label "Add New Category" %>

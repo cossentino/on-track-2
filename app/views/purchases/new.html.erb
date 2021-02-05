@@ -1,5 +1,5 @@
 <h1>Add a new purchase</h1>
 
 <div class="row" style="display:block">
- <%= render partial: "new_edit_purchase", locals: { purchase: @purchase } %>
+ <%= render partial: "new_edit_purchase", locals: { purchase: @purchase, url: user_purchases_path(signed_in_user) } %>
 </div>
