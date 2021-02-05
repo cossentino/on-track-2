@@ -1,6 +1,7 @@
 class Purchase < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
+  
 
   def self.current_month
     Time.now.strftime('%m')
@@ -17,6 +18,12 @@ class Purchase < ApplicationRecord
   def self.current_month_purchases(user)
     Purchase.where('purchases.date BETWEEN ? AND ?', "#{current_year}-#{current_month}-01", "#{current_year}-#{current_month}-#{last_day_of_month}").where('purchases.user_id = ?', user.id)
   end
+
+  def category_attributes=(category_attributes)
+    self.category = Category.find_or_create_by(name: category_attributes[:name])
+    self.category.update(category_attributes)
+  end
+
 end
 
 
