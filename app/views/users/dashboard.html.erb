@@ -1,6 +1,6 @@
 <h4><%= "Welcome, #{@user.first_name}" %></h4> <img src=<%= session[:image] if session[:image] %>>
 
-<h5>Dashboard</h5>
+
 
 <h5>My Purchases this month </h5>
 
@@ -11,8 +11,10 @@
   <div class="col s4"><h6>Notes: </h6></div>
   <div class="col s2"><h6> Category: </h6></div>
 </div>
-<% @user.purchases.each do |pur| %>
+<% Purchase.current_month_purchases(@user).each do |pur| %>
   <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
 <% end %>
+
+<%= link_to "View All Purchases", user_purchases_path(@user), class: 'btn' %>
 
 
