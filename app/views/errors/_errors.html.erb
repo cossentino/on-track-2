@@ -2,7 +2,7 @@
   <div id="error_explanation">
     <h6>
       <%= pluralize(object.errors.count, "error") %>
-      <%="prohibited this #{object.class.name} from being saved:" %>
+      <%="prohibited this #{object.class.name.downcase} from being saved:" %>
     </h6>
 
     <ul>

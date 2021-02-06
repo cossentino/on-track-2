@@ -1,4 +1,7 @@
 
 
 <h1>Edit your profile: </h1>
-<%= render partial: "form", locals: {user: @user } %>
+
+<%= render partial: "/errors/errors", locals: { object: user } %>
+
+<%= render partial: "form", locals: { user: user } %>

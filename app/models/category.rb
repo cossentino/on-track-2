@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   has_many :purchases
   has_many :users, through: :purchases
+  validates_presence_of :name
 
 
   def self.my_categories(user)

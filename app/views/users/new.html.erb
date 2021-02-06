@@ -1,6 +1,9 @@
 
 
+<%= render partial: "/errors/errors", locals: { object: user } %>
+
+
+
 <h1>Create your profile: </h1>
-<div class="fields_with_errors">
-  <%= render partial: "form", locals: {user: @user } %>
-</div>
+
+  <%= render partial: "form", locals: {user: user } %>

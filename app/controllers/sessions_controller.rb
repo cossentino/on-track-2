@@ -3,8 +3,7 @@ class SessionsController < ApplicationController
     if logged_in?
       redirect_to '/dashboard'
     else
-      @user = User.new
-      render :login
+      render :login, locals: { user: User.new }
     end
   end
 

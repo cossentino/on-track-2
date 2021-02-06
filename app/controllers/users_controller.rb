@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :user_verification
 
   def new
-    @user = User.new
+    render :new, locals: { user: User.new }
   end
 
   def dashboard
@@ -11,21 +11,25 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    render :edit, locals: { user: current_user }
   end
 
   def create
-    binding.pry
     user = User.new(user_params_for_sessions)
     if user.save
       session[:user_id] = user.id; redirect_to '/dashboard'
     else
-      failure_redirect("There was an error saving your account. Please try again.", '/signup')
+      render :new, locals: { user: user }
     end
   end
 
   def update
-    !!current_user.update(user_params) ? (redirect_to '/dashboard') : failure_redirect("There was an error saving your account. Please try again.", '/signup')
+    user = current_user
+    if user.update(user_params)
+      redirect_to '/dashboard'
+    else
+      render :edit, locals: { user: user }
+    end
   end
 
 

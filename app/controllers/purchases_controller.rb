@@ -39,7 +39,7 @@ class PurchasesController < ApplicationController
       redirect_to user_purchases_path(current_user)
     else
       flash[:alert] = "could not update, please try again"
-      render :edit, locals: @purchase = Purchase.find_by_id(params[:id])
+      render :edit, locals: { purchase: purchase }
     end
   end
 
