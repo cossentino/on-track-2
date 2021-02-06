@@ -1,7 +1,10 @@
 class Purchase < ApplicationRecord
+  include ActiveModel::Validations
   belongs_to :user
   belongs_to :category, optional: true
-  validates_presence_of :location
+  validates_presence_of :location, :total, :date
+  validates_with TotalValidator
+
   
 
   def self.current_month

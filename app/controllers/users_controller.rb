@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
 
   private
-  
+
   def user_params_for_sessions
     params.require(:user).permit(:email, :password, :password_confirmation, :income, :first_name, :last_name)
   end
@@ -50,8 +50,5 @@ class UsersController < ApplicationController
     end
   end
   
-  # def failure_redirect(message, redirect_path)
-  #   flash[:alert] = message
-  #   redirect_to redirect_path
-  # end
+
 end
