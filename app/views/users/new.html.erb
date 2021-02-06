@@ -7,3 +7,7 @@
 <h1>Create your profile: </h1>
 
   <%= render partial: "form", locals: {user: user } %>
+
+
+
+<br><br><%= link_to "Log In", root_path, class: "btn" %>&nbsp;&nbsp;<%= link_to "Continue with Google", "/auth/google_oauth2", { method: :post, id: "my-signin2", class: 'btn' } %>
