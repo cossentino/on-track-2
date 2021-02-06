@@ -30,7 +30,8 @@ class PurchasesController < ApplicationController
   end
 
   def edit
-    @purchase = Purchase.find_by_id(params[:id])
+    purchase = Purchase.find_by_id(params[:id])
+    render :edit, locals: { purchase: purchase }
   end
 
   def update
