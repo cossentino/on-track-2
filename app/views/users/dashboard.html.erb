@@ -1,13 +1,13 @@
 
 <div class="row" style="display:block">
-  <h5 class="left"><%= "Welcome, #{@user.first_name}" %></h5> <img class="right" src=<%= session[:image] if session[:image] %>>
+  <h4 style="float:left"><%= "Welcome, #{@user.first_name}" %></h4> <img class="right" src=<%= session[:image] if session[:image] %>>
 </div>
 
 
 
-<h5>My Purchases this month </h5>
+<h6><%= "Here's your spending for the month of #{Time.now.strftime("%B")}:" %></h6>
 
-<div class="row" style="display:block">
+<div class="row" style="margin:auto;">
   <div class="col s2"><h6>Name: </h6></div>
   <div class="col s2"><h6>Date: </h6></div>
   <div class="col s1"><h6>Total: </h6></div>
@@ -20,9 +20,19 @@
     </div>
   <% end %>
 
-  <h6>Current month total: </h6><h6><strong>$<%= current_month_total %></strong></h6>
+<br><br>
+
+<div class="row">
+  <div style="display:inline-block; margin-right:10px;">
+    <%= "Your total for the month is " %><div style="font-weight:bold; display:inline-block; margin-right:10px;"><%= "$#{current_month_total}" %></div>
+  </div>
+  <div style="display:inline-block;">
+    <%= "This is #{(current_month_total / signed_in_user.income) * 100}% of your monthly income." %>
+  </div>
+</div>
 
 
-<%= link_to "View All Purchases", user_purchases_path(@user), class: 'btn' %>
+
+<br><br><%= link_to "View All Purchases", user_purchases_path(@user), class: 'btn' %>
 
 

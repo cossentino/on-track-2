@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
   def destroy
     # raise params.inspect
     Purchase.find_by_id(params[:id]).destroy
-    redirect_to '/'
+    redirect_to user_purchases_path(current_user)
   end
 
   def edit

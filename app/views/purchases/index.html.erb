@@ -14,7 +14,7 @@
   <div class="row" style="margin-bottom:0px">
     <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
     <div class="right">
-      <p><a href="<%= edit_user_purchase_path(signed_in_user, pur)%>">Edit</a>&nbsp;&nbsp;<a style="float:right" href="<%= delete_user_purchase_path(signed_in_user, pur)%>">Delete</a></p>
+      <p><a href="<%= edit_user_purchase_path(signed_in_user, pur)%>" class="btn">Edit</a>&nbsp;&nbsp;<a style="float:right" href="<%= delete_user_purchase_path(signed_in_user, pur)%>" class="btn">Delete</a></p>
     </div>
   </div>
 <% end %>
