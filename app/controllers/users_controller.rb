@@ -34,26 +34,24 @@ class UsersController < ApplicationController
 
 
   private
-
-    def failure_redirect(message, redirect_path)
-      flash[:alert] = message
-      redirect_to redirect_path
+  
+  def user_params_for_sessions
+    params.require(:user).permit(:email, :password, :password_confirmation, :income, :first_name, :last_name)
+  end
+  
+  def user_params
+    params.require(:user).permit(:password, :password_confirmation, :income, :first_name, :last_name, :family_id)
+  end
+  
+  
+  def user_verification
+    if params[:id]
+      redirect_to root_path unless session[:user_id] == params[:id].to_i
     end
-
-
-    def user_params_for_sessions
-      params.require(:user).permit(:email, :password, :password_confirmation, :income, :first_name, :last_name)
-    end
-
-    def user_params
-      params.require(:user).permit(:password, :password_confirmation, :income, :first_name, :last_name, :family_id)
-    end
-
-
-    def user_verification
-      if params[:id]
-        redirect_to root_path unless session[:user_id] == params[:id].to_i
-      end
-    end
-
+  end
+  
+  # def failure_redirect(message, redirect_path)
+  #   flash[:alert] = message
+  #   redirect_to redirect_path
+  # end
 end

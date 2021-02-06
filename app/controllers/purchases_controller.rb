@@ -42,7 +42,6 @@ class PurchasesController < ApplicationController
     end
   end
 
-
   private
 
   def user_verification
