@@ -1,9 +1,9 @@
 class Purchase < ApplicationRecord
   include ActiveModel::Validations
+  validates_with TotalValidator
   belongs_to :user
   belongs_to :category, optional: true
   validates_presence_of :location, :total, :date
-  validates_with TotalValidator
 
   
 

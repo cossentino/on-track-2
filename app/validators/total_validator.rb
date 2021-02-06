@@ -4,8 +4,8 @@ class TotalValidator < ActiveModel::Validator
 
 
   def validate(record)
-    unless record.total.to_s.match?(/\A[+-]?\d+\.?\d?/)
-      record.errors[:total] << "Total must be a number"
+    if record.total.to_s.match?(/0\.0/)
+      record.errors[:total] << "must be a number that is not 0"
     end
   end
 
