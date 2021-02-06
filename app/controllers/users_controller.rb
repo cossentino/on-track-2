@@ -17,23 +17,19 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params_for_sessions)
-    if user.save
-      session[:user_id] = user.id
-      redirect_to '/dashboard'
-    else
-      flash[:alert] = "There was an error saving your account. Please try again."
-      redirect_to '/signup'
-    end
+    save_or_redirect('save', '/dashboard', '/signup' )
+    # if user.save
+    #   session[:user_id] = user.id
+    #   redirect_to '/dashboard'
+    # else
+    #   flash[:alert] = "There was an error saving your account. Please try again."
+    #   redirect_to '/signup'
+    # end
   end
 
   def update
-    user = current_user.update
-    if current_user.update(user_params)
-      redirect_to '/dashboard'
-    else
-      flash[:alert] = "There was an error saving your account. Please try again."
-      render :edit
-    end
+    user = current_user
+    save_or_redirect('update', '/dashboard', edit_user_path(current_user))
   end
 
 
