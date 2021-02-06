@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    puts session[:user_id]
     @user = current_user
   end
 
@@ -18,17 +17,15 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params_for_sessions)
     if user.save
-      session[:user_id] = user.id
-      redirect_to '/dashboard'
+      session[:user_id] = user.id; redirect_to '/dashboard'
     else
-      failure_redirect("There was an error saving your account. Please try again.", '/signup')å
+      failure_redirect("There was an error saving your account. Please try again.", '/signup')
     end
   end
 
   def update
     !!current_user.update(user_params) ? (redirect_to '/dashboard') : failure_redirect("There was an error saving your account. Please try again.", '/signup')
   end
-
 
 
   private
@@ -53,7 +50,5 @@ class UsersController < ApplicationController
         redirect_to root_path unless session[:user_id] == params[:id].to_i
       end
     end
-
-
 
 end
