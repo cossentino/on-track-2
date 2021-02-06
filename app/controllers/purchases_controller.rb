@@ -11,6 +11,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    # raise params.inspect
     purchase = Purchase.new(purchase_params)
     if purchase.save
       if params[:commit] == "Save and add another"
