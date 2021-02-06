@@ -12,5 +12,10 @@ class ApplicationController < ActionController::Base
       !!session[:user_id]
     end
 
+    def set_session(user)
+      session[:user_id] = user.id
+      redirect_to '/dashboard'
+    end
+
 
 end

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  
   def login
     if logged_in?
       redirect_to '/dashboard'
@@ -15,19 +16,17 @@ class SessionsController < ApplicationController
   def sign_in_user
     user = User.find_by(email: user_params_for_sessions[:email])
     if user && user.authenticate(user_params_for_sessions[:password])
-      session[:user_id] = user.id
-      redirect_to '/dashboard'
+      set_session(user)
     else
       flash[:alert] = 'Error logging in, please try again'
-      render :login
+      render :login, locals: { user: User.new }
     end
   end
 
-
-  ##Create user via oauth and login via oauth in same method here
+  ##Create/login via oauth
   def oauth
     oauth_email = request.env['omniauth.auth']['info']['email']
-    ## if user exists in database, ensure that it is also from social
+    ## if user exists in database, ensure that it is also from social to avoid duplicate
     if user = User.find_by(email: oauth_email)
       if user.from_social != true
         flash[:alert] = 'Email is already associated with an account. Please try again'
@@ -35,7 +34,6 @@ class SessionsController < ApplicationController
       else
         login_from_social(user)
       end
-    ## if not duplicate and not existing social user, create user from social
     else
       create_from_social
     end
@@ -47,7 +45,6 @@ class SessionsController < ApplicationController
   def user_params_for_sessions
     params.require(:user).permit(:email, :password, :password_confirmation, :income, :first_name, :last_name)
   end
-
 
   def login_from_social(user)
     session[:user_id] = user.id
@@ -65,7 +62,7 @@ class SessionsController < ApplicationController
     if user.save
       login_from_social(user)
     else
-      flash[:alert] = 'Unable to create Account. Please try again'
+      flash[:alert] = 'Unable to create account. Please try again'
       redirect_to '/'
     end
   end

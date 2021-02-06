@@ -71,7 +71,7 @@ Specs:
 
     Include form display of validation errors (form URL e.g. /recipes/new)
 
-    []
+      Errors form partial displays validation errors upon unsuccessful creation/editing of user or purchase
 
 
 Confirm:
