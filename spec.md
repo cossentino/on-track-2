@@ -12,7 +12,7 @@ Specs:
     Include at least one belongs_to relationship (x belongs_to y; e.g. Post 
     belongs_to User)
       
-      Example: Purchase belongs to category
+      Example: Purchase belongs to Category
 
     Include at least two has_many through relationships (x has_many y through z; e.g. 
     Recipe has_many Items through Ingredients)
@@ -31,7 +31,7 @@ Specs:
     attribute, that is to say, some attribute other than its foreign keys that can be 
     submitted by the app's user (attribute_name e.g. ingredients.quantity)
       
-      Purchases have many attributes, including location, total, date, and note
+      Purchases, a join table for Users/Categories, has many attributes, including: location, total, date, and note
 
     Include reasonable validations for simple model objects (list of model objects 
     with validations e.g. User, Recipe, Ingredient, Item)
@@ -43,7 +43,6 @@ Specs:
     most_recipes)
 
       Exmaple: Category.current_month_purchases returns purchases filtered by current month -- located at '/dashboard'
-
 
     Include signup (how e.g. Devise)
 
