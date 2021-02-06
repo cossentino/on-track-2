@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   before_action :user_verification
 
   def new
-    @purchase = current_user.purchases.build
+    render :new, locals: { purchase: current_user.purchases.build }
   end
 
   def index
@@ -19,8 +19,7 @@ class PurchasesController < ApplicationController
         redirect_to '/dashboard'
       end
     else
-      flash[:alert] = "Purchase couldn't save, please try again"
-      redirect_to new_user_purchase_path(current_user)
+      render :new, locals: { purchase: purchase }
     end
   end
 
