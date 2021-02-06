@@ -20,7 +20,7 @@ class PurchasesController < ApplicationController
       end
     else
       flash[:alert] = "Purchase couldn't save, please try again"
-      redirect_to '/'
+      redirect_to new_user_purchase_path(current_user)
     end
   end
 
@@ -54,6 +54,9 @@ class PurchasesController < ApplicationController
   def purchase_params
     params.require(:purchase).permit(:location, :date, :note, :total, :category_id, :user_id, category_attributes: [:name])
   end
+
+
+
 
   
 end

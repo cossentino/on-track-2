@@ -1,6 +1,7 @@
 class Purchase < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
+  validates_presence_of :location
   
 
   def self.current_month

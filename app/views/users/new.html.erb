@@ -1,4 +1,6 @@
 
 
 <h1>Create your profile: </h1>
-<%= render partial: "form", locals: {user: @user } %>
+<div class="fields_with_errors">
+  <%= render partial: "form", locals: {user: @user } %>
+</div>
