@@ -8,10 +8,7 @@
   <%= f.text_field :email %>
   <%= f.label "Password" %>
   <%= f.text_field :password %>
-  <%= f.submit "Log In" %>
+  <div class="row">
+    <p><%= f.submit "Log In", { class: "btn"} %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Sign Up", "/signup", { class: 'btn'} %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Continue with Google", "/auth/google_oauth2", { method: :post, class: 'btn' } %></p>
+  </div>
 <% end %>
-
-
-<%= link_to "Sign Up", "/signup" %>
-<p> or </p>
-<%= link_to "Continue with Google", "/auth/google_oauth2", method: :post %>
