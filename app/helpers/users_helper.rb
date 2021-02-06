@@ -1,11 +1,15 @@
 module UsersHelper
 
-  def email_field
+  def email_form_field(form_object)
     if session[:user_id]
-      @user.email
+      signed_in_user.email
     else
-      f.text_field :email
+      form_object.text_field :email
     end
+  end
+
+  def password_form_field(form_object)
+      form_object.password_field(:password) if !session[:user_id]
   end
 
 end

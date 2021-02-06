@@ -1,6 +1,8 @@
 <%= form_for user do |f| %>
-  <%= f.label :email %><br>
-  <%= @user.email %><br><br>
+  <%= f.label "Email" %><br>
+  <%= email_form_field(f) %><br><br>
+  <%= f.label "Password" if !signed_in_user %><br>
+  <%= password_form_field(f) %>
   <%= f.label "First Name" %>
   <%= f.text_field :first_name %>
   <%= f.label "Last Name" %>
