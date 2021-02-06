@@ -24,8 +24,10 @@ class Purchase < ApplicationRecord
   end
 
   def category_attributes=(category_attributes)
-    self.category = Category.find_or_create_by(name: category_attributes[:name])
-    self.category.update(category_attributes)
+    if !category_attributes[:name].empty?
+      self.category = Category.find_or_create_by(name: category_attributes[:name])
+      self.category.update(category_attributes)
+    end
   end
 
 end
