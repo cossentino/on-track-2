@@ -10,15 +10,18 @@
 <div class="row" style="display:block">
   <div class="col s2"><h6>Name: </h6></div>
   <div class="col s2"><h6>Date: </h6></div>
-  <div class="col s2"><h6>Total: </h6></div>
-  <div class="col s4"><h6>Notes: </h6></div>
+  <div class="col s1"><h6>Total: </h6></div>
+  <div class="col s3"><h6>Notes: </h6></div>
   <div class="col s2"><h6> Category: </h6></div>
 </div>
-<div class="row" style="display:block">
   <% Purchase.current_month_purchases(@user).each do |pur| %>
-    <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
+    <div class="row" style="display:block">
+      <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
+    </div>
   <% end %>
-</div>
+
+  <h6>Current month total: </h6><h6><strong>$<%= current_month_total %></strong></h6>
+
 
 <%= link_to "View All Purchases", user_purchases_path(@user), class: 'btn' %>
 

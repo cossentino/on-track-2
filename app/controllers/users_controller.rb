@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    user = current_user.update
     if current_user.update(user_params)
       redirect_to '/dashboard'
     else
@@ -38,6 +39,17 @@ class UsersController < ApplicationController
 
 
   private
+
+    def save_or_redirect(method, success_redirect, failure_redirect)
+      if user.send(method)
+        !!session[:user_id] ?  nil : session[:user_id] = user.id
+        redirect_to success_redirect
+      else
+        flash[:alert] = "There was an error saving your account. Please try again."
+        redirect_to failure_redirect
+      end
+    end
+
 
     def user_params_for_sessions
       params.require(:user).permit(:email, :password, :password_confirmation, :income, :first_name, :last_name)
