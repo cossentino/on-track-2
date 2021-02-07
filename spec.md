@@ -37,9 +37,19 @@ Specs:
     with validations e.g. User, Recipe, Ingredient, Item)
 
         Users
-          Most fields are required and emails must be unique; password is required except when using Oauth
+          Email, first name, last name, and income are required
+          Emails must be unique
+          Password is required except when using Oauth; user must be authenticated using Bcrypt to login except via Oauth
+          Oauth users are validated at the controller level to avoid duplicating a non-oauth user with the same information
+  
         Purchases
-          Purchases require a name and total, and the total must be a number greater than zero
+          Require a name
+          Require a total
+          Require a date
+          Total must be a number greater than zero (custom validator)
+        
+        Categories
+          Require a name
 
     Include a class level ActiveRecord scope method (model object & class method name 
     and URL to see the working feature e.g. User.most_recipes URL: /users/
