@@ -36,7 +36,10 @@ Specs:
     Include reasonable validations for simple model objects (list of model objects 
     with validations e.g. User, Recipe, Ingredient, Item)
 
-
+        Users
+          Most fields are required and emails must be unique; password is required except when using Oauth
+        Purchases
+          Purchases require a name and total, and the total must be a number greater than zero
 
     Include a class level ActiveRecord scope method (model object & class method name 
     and URL to see the working feature e.g. User.most_recipes URL: /users/
