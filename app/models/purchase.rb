@@ -34,4 +34,3 @@ end
 
 
 
-# "#{Purchase.current_year}-#{Purchase.current_month}-1", "#{current_year}-#{current_month}-#{last_day_of_month}")

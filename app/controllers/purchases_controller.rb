@@ -11,7 +11,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     purchase = Purchase.new(purchase_params)
     if purchase.save
       if params[:commit] == "Save and add another"
@@ -25,7 +24,6 @@ class PurchasesController < ApplicationController
   end
 
   def destroy
-    # raise params.inspect
     Purchase.find_by_id(params[:id]).destroy
     redirect_to user_purchases_path(current_user)
   end

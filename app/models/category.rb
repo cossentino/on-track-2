@@ -11,14 +11,4 @@ class Category < ApplicationRecord
       .where('purchases.user_id = ?', user.id )
   end
 
-# SELECT DISTINCT name
-# FROM categories
-# INNER JOIN purchases
-# ON categories.id = purchases.category_id
-# WHERE purchases.user_id = 1
-
-
-
-
-
 end
