@@ -3,7 +3,6 @@ class User < ApplicationRecord
   validates :password, presence: true, unless: :from_social?
   validates_presence_of [:email, :first_name, :last_name]
   validates :email, uniqueness: true
-  belongs_to :family, optional: true
   has_many :purchases
   has_many :categories, through: :purchases
 

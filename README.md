@@ -3,7 +3,6 @@
 
 This Rails application allows users to track their spending, separated by category, with respect to their monthly income.
 
-    
 ## For Flatiron School project submission:
     
    Non-technical demo video: "https://youtu.be/bZcYmFTp268"
