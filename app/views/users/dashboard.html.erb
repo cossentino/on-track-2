@@ -23,7 +23,7 @@
     <%= "Your total for the month is " %><div style="font-weight:bold; display:inline-block; margin-right:10px;"><%= "$#{current_month_total}" %></div>
   </div>
   <div style="display:inline-block;">
-    <%= "This is #{(current_month_total / signed_in_user.income) * 100}% of your monthly income." %>
+    <%= "This is #{percent_of_income}% of your monthly income." %>
   </div>
 </div>
 
