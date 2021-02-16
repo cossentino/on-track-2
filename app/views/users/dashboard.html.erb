@@ -7,15 +7,11 @@
 
 <h6><%= "Here's your spending for the month of #{Time.now.strftime("%B")}:" %></h6>
 
-<div class="row" style="margin:auto;">
-  <div class="col s2"><h6>Name: </h6></div>
-  <div class="col s2"><h6>Date: </h6></div>
-  <div class="col s1"><h6>Total: </h6></div>
-  <div class="col s3"><h6>Notes: </h6></div>
-  <div class="col s2"><h6> Category: </h6></div>
-</div>
+
+  <%= render partial: '/purchases/purchase_headers' %>
+
   <% Purchase.current_month_purchases(@user).each do |pur| %>
-    <div class="row" style="display:block">
+    <div class="row" style="margin-bottom:0px">
       <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
     </div>
   <% end %>
