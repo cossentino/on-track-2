@@ -9,7 +9,7 @@
   <%= f.label "Email" %>
   <%= f.text_field :email %>
   <%= f.label "Password" %>
-  <%= f.text_field :password %>
+  <%= f.password_field :password %>
   <div class="row">
     <p><%= f.submit "Log In", { class: "btn"} %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Sign Up", "/signup", { class: 'btn'} %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Continue with Google", "/auth/google_oauth2", { method: :post, id: "my-signin2", class: 'btn' } %></p>
   </div>
