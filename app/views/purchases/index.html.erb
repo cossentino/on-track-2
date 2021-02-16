@@ -3,11 +3,11 @@
 
 <h5>All purchases </h5>
 
-<div class="row" style="display:block">
-  <%= render partial: '/purchases/purchase_headers' %>
-</div>
+
+<%= render partial: 'purchase_headers' %>
+
 <% @purchases.each do |pur| %>
-  <div class="row" style="margin-bottom:0px">
+  <div class="row" style="margin-bottom:0px; margin-top:0px">
     <%= render partial: '/purchases/purchase', locals: { purchase: pur } %>
     <div class="right">
       <p><a href="<%= edit_user_purchase_path(signed_in_user, pur)%>" class="btn">Edit</a>&nbsp;&nbsp;<a style="float:right" href="<%= delete_user_purchase_path(signed_in_user, pur)%>" class="btn">Delete</a></p>
