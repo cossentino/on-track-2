@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#dashboard'
   get '/users/:id', to: 'users#dashboard'
   get '/users', to: 'users#dashboard'
-  match '/users/:user_id/purchases/:id/delete', to: 'purchases#destroy', via: [:get, :post], as: 'delete_user_purchase'
+  delete '/users/:user_id/purchases/:id', to: 'purchases#destroy', as: 'delete_user_purchase'
+  # match '/users/:user_id/purchases/:id/delete', to: 'purchases#destroy', via: [:get, :post], as: 'delete_user_purchase'
   resources :users, except: [:index, :show] do 
     resources :purchases
   end
