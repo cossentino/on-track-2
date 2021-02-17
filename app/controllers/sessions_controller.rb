@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   def sign_in_user
     user = User.find_by(email: user_params_for_sessions[:email])
     if user && user.authenticate(user_params_for_sessions[:password])
+      session[:image] = 'https://images.unsplash.com/photo-1549630755-15b113e34179?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=769&q=80/'
       set_session(user)
     else
       flash[:alert] = 'Error logging in, please try again'
