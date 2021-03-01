@@ -5,6 +5,11 @@ class Purchase < ApplicationRecord
   belongs_to :category, optional: true
   validates_presence_of :location, :total, :date
 
+
+
+  def self.my_purchases_by_name(user)
+    Purchase.where(user_id: user.id).order(:location)
+  end
   
 
   def self.current_month

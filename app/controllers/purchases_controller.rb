@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
   end
 
   def index
-    @purchases = Purchase.where(user_id: current_user.id )
+    @purchases = Purchase.my_purchases_by_name(current_user)
   end
 
   def create
